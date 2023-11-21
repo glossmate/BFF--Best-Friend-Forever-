@@ -24,6 +24,8 @@ import { Button } from "@mui/material";
 import { lightGreen } from "@mui/material/colors";
 import DiaryList from "./DiaryList";
 import Login from "./Login";
+import DiaryView from "./DiaryView";
+import DiaryModifyForm from "./DiaryModifyForm";
 
 const drawerWidth = 240;
 
@@ -84,6 +86,10 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  function GO_HOME() {
+    window.location.replace("/");
+  }
+
   function DO_WRITE_DIARY() {
     window.location.replace("/WriteDiary");
   }
@@ -107,7 +113,9 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="outline" noWrap component="div">
-            <h3>너나들이</h3>
+            <h3 onClick={GO_HOME} style={{
+              cursor: 'pointer'
+            }}>너나들이</h3>
           </Typography>
           <Button
             variant="contained"
@@ -175,12 +183,13 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<DiaryList />} />
             <Route path="/WriteDiary" element={<WriteDiaryForm />} />
+            <Route path="/DiaryModify/:id" element={<DiaryModifyForm />} />
             <Route path="/Login" element={ <Login />} />
+            <Route path="/Diary/:id" element={<DiaryView />} />
           </Routes>
         </BrowserRouter>
       </Main>
