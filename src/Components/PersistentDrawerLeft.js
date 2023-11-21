@@ -26,6 +26,7 @@ import DiaryList from "./DiaryList";
 import Login from "./Login";
 import DiaryView from "./DiaryView";
 import DiaryModifyForm from "./DiaryModifyForm";
+import DiaryDelete from "./DiaryDelete";
 
 const drawerWidth = 240;
 
@@ -188,6 +189,7 @@ export default function PersistentDrawerLeft() {
             <Route path="/" element={<DiaryList />} />
             <Route path="/WriteDiary" element={<WriteDiaryForm />} />
             <Route path="/DiaryModify/:id" element={<DiaryModifyForm />} />
+            <Route path="/DiaryDelete/:id" element={<DiaryDelete />} />
             <Route path="/Login" element={ <Login />} />
             <Route path="/Diary/:id" element={<DiaryView />} />
           </Routes>

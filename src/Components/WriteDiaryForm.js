@@ -18,7 +18,7 @@ export default function WriteDiaryForm() {
       window.location.protocol +
         "//" +
         window.location.hostname +
-        `:8050/Diary`,
+        `:8055/Diary`,
       {
         method: "POST",
         headers: {

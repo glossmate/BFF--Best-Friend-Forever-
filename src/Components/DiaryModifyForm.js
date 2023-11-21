@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useParams } from "react-router"
 import { Box, Button, TextField } from "@mui/material";
-import { useEffect } from "react";
 import useFetch from "./useFetch";
 
 export default function DiaryModifyForm() {
@@ -14,11 +13,14 @@ export default function DiaryModifyForm() {
     console.log(OneDiary);
 
     if (OneDiary.TITLE === undefined) {
+      console.log('useFetch 에서 정보를 가져오기 이전 입니다.');
+      console.log('이때는 null 을 응답해서 에러가 나지 않도록 합니다.');
         return null;
     }
 
     function SAVE_DIARY() {
         const SAVE_DATA = {
+          ...OneDiary,
           TITLE: REF_TITLE.current.value,
           CONTENT: REF_CONTENT.current.value,
         };
@@ -28,7 +30,7 @@ export default function DiaryModifyForm() {
           window.location.protocol +
             "//" +
             window.location.hostname +
-            `:8050/Diary/${id}`,
+            `:8055/Diary/${id}`,
           {
             method: "PUT",
             headers: {

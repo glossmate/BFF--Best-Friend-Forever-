@@ -1,11 +1,6 @@
 {
   "Diary": [
     {
-      "TITLE": "제목ㄴㅇㅀㅇㅀㅇㄶ",
-      "CONTENT": "내엉 일김ㄴ어롬ㄴ이로",
-      "id": 1
-    },
-    {
       "TITLE": "s론ㅇㄹ혼ㅇㅀ",
       "CONTENT": "ㄴㅇ론ㅇ로홍",
       "id": 2
@@ -19,11 +14,6 @@
       "TITLE": "가나다라호호호호",
       "CONTENT": "일기리일기",
       "id": 4
-    },
-    {
-      "TITLE": "dfuhgsd9hgirgd",
-      "CONTENT": "sdfgdfhsgfhdf",
-      "id": 5
     }
   ]
 }

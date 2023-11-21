@@ -1,5 +1,4 @@
 import { useParams } from "react-router";
-import DiaryList from "./DiaryList";
 import useFetch from "./useFetch";
 import { Button } from "@mui/material";
 
@@ -12,13 +11,18 @@ export default function DiaryView() {
     function GO_HOME() {
         window.location.replace("/");
     }
+
     function GO_MODIFY() {
         window.location.replace(`/DiaryModify/${id}`);
     }
 
+    function GO_DELETE() {
+      window.location.replace(`/DiaryDelete/${id}`);
+  }
+
     return <div>
         <p>일기 제목 : {ONE_Diary.TITLE}</p>
-        <p>일기 내용 : {ONE_Diary.CONTENT}</p>
+        <p>일기 내용 : <pre>{ONE_Diary.CONTENT}</pre></p>
         <Button
             variant="contained"
             color="success"
@@ -45,6 +49,20 @@ export default function DiaryView() {
             onClick={GO_MODIFY}
           >
             수정하기
+          </Button>
+
+          <Button
+            variant="contained"
+            color="success"
+            style={{
+              position: "absolute",
+              backgroundColor: 'blue',
+              right: 0,
+              marginRight: "230px",
+            }}
+            onClick={GO_DELETE}
+          >
+            삭제하기
           </Button>
 
 
