@@ -21,7 +21,7 @@ export default function DiaryView() {
   }
 
     return <div>
-        <p>일기 제목 : {ONE_Diary.TITLE}</p>
+        <p>{ONE_Diary.DATE} : {ONE_Diary.TITLE}</p>
         <p>일기 내용 : <pre>{ONE_Diary.CONTENT}</pre></p>
         <Button
             variant="contained"

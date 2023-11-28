@@ -11,7 +11,7 @@ export default function DiaryList() {
         {OBJ_DiaryList.map((ONE_DIARY) => (
             <li key={ONE_DIARY.id}>
                 <Link to={`/Diary/${ONE_DIARY.id}`}>
-                    일기 제목 : {ONE_DIARY.TITLE}
+                {ONE_DIARY.DATE} : {ONE_DIARY.TITLE}
                 </Link>
             </li>
         ))}

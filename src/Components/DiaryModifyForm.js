@@ -2,8 +2,14 @@ import * as React from "react";
 import { useParams } from "react-router"
 import { Box, Button, TextField } from "@mui/material";
 import useFetch from "./useFetch";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import dayjs from "dayjs";
 
 export default function DiaryModifyForm() {
+  let DIARY_DATE = new Date().toISOString();
 
     const REF_TITLE = React.useRef(null);
     const REF_CONTENT = React.useRef(null);
@@ -18,9 +24,15 @@ export default function DiaryModifyForm() {
         return null;
     }
 
+    function DATE_CHANGED(value, e) {
+      DIARY_DATE = value.format();
+      console.log(DIARY_DATE); // this will be a moment date object
+    }
+  
     function SAVE_DIARY() {
         const SAVE_DATA = {
           ...OneDiary,
+          DATE: DIARY_DATE,
           TITLE: REF_TITLE.current.value,
           CONTENT: REF_CONTENT.current.value,
         };
@@ -58,16 +70,34 @@ export default function DiaryModifyForm() {
     noValidate
     autoComplete="off"
   >
-    <div>
-      <TextField
-        inputRef={REF_TITLE}
-        required
-        id="DiaryTitle"
-        label="제목"
-        placeholder="내용을 입력해 주세요"
-        defaultValue={OneDiary.TITLE}
-      />
-    </div>
+      <div>
+        <div style={{
+          width: '25%',
+          float: 'left'
+        }}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} >
+          <DatePicker 
+            defaultValue={dayjs()} format={'YYYY-MM-DD'}
+            onChange={(value, e) => DATE_CHANGED(value, e)}
+          />
+        </LocalizationProvider>
+
+        </div>
+        <div style={{
+          width: '75%',
+          float: 'left'
+        }}>
+        <TextField
+          inputRef={REF_TITLE}
+          required
+          id="DiaryTitle"
+          label="제목"
+          placeholder="내용을 입력해 주세요"
+          defaultValue={OneDiary.TITLE}
+        />
+
+        </div>
+      </div>
     <div>
       <TextField
         inputRef={REF_CONTENT}
@@ -81,7 +111,7 @@ export default function DiaryModifyForm() {
         defaultValue={OneDiary.CONTENT}
       />
     </div>
-    <Button
+   <Button
       variant="contained"
       style={{
         position: "absolute",
