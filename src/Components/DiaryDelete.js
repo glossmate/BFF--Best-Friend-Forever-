@@ -14,6 +14,8 @@ export default function DiaryDelete() {
             if(res.ok) {
                 alert('일기 : ' +JSON.stringify(ONE_Diary,null, ' ') + '를 삭제하였습니다.');
                 window.location.replace("/");
+            } else {
+                alert('삭제하는 동안 오류가 발생했습니다.');
             }
         });
     }

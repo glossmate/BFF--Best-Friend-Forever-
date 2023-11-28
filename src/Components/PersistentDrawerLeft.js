@@ -17,6 +17,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MyHome from '@mui/icons-material/OtherHouses';
 import MailIcon from "@mui/icons-material/Mail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import WriteDiaryForm from "./WriteDiaryForm";
@@ -172,7 +173,10 @@ export default function PersistentDrawerLeft() {
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {index === 0 ? <MyHome /> :  '' }
+                    {index === 1 ? <InboxIcon /> :  '' }
+                    {index === 2 ? <MailIcon /> :  '' }
+                    {index === 3 ? <MyHome /> :  '' }
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
